@@ -14,6 +14,7 @@ namespace ImageEditorDLL
         [DispId(1)]
 
         //методы, которые будут вызываться извне
+
         string printin1C(string msg);
 
     }
@@ -31,6 +32,8 @@ namespace ImageEditorDLL
         ComSourceInterfaces(typeof(IMyEvents))]
     public class MyClass : IMyClass
     {
+        //реализация методов
+
         public string printin1C(string msg)
         {
             return msg;

@@ -17,7 +17,8 @@ using System.Runtime.InteropServices;
 // Установка значения False для параметра ComVisible делает типы в этой сборке невидимыми
 // для компонентов COM. Если необходимо обратиться к типу в этой сборке через
 // COM, задайте атрибуту ComVisible значение TRUE для этого типа.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
+[assembly: AssemblyKeyFile("ImageEditorDLL.snk")]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
 [assembly: Guid("0423fde7-da6f-48f6-8a9a-66491f200461")]
