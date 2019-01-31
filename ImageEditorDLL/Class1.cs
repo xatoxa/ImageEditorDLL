@@ -15,8 +15,6 @@ namespace ImageEditorDLL
         [DispId(1)]
 
         //методы, которые будут вызываться извне
-        //print - просто пример, потом её надо будет удалить
-        string printin1C(string msg);
 
         Image Cut_image(Image image, uint x1, uint y1, uint x2, uint y2);
 
@@ -38,18 +36,14 @@ namespace ImageEditorDLL
     public class MyClass : IMyClass
     {
         //реализация методов
-
-        public string printin1C(string msg)
-        {
-            return msg;
-        }
-
-
-
+    
         public Image Cut_image(Image image, uint x1, uint y1, uint x2, uint y2)
         {
+            Bitmap bmp = image as Bitmap;
 
-            return null; //заглушка, должна возвратить Image;
+            Bitmap result = bmp.Clone(new Rectangle((int)x1, (int)y1, (int)x2, (int)y2),bmp.PixelFormat);
+
+            return result;
         }
 
 
@@ -59,14 +53,14 @@ namespace ImageEditorDLL
             if (image1 == null || image2 == null) return null; 
 
 
-            Bitmap bmp = new Bitmap(image1.Width, image1.Height);
+            Bitmap result = new Bitmap(image1.Width, image1.Height);
 
-            using (Graphics g = Graphics.FromImage(bmp))
+            using (Graphics g = Graphics.FromImage(result))
             {
                 g.DrawImage(image1, 0, 0, image1.Width, image1.Height);
                 g.DrawImage(image2, x1, y1, image2.Width, image2.Height);
 
-                return bmp;
+                return result;
             }
         }
     }
