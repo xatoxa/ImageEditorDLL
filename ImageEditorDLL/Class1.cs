@@ -44,20 +44,30 @@ namespace ImageEditorDLL
             return msg;
         }
 
+
+
         public Image Cut_image(Image image, uint x1, uint y1, uint x2, uint y2)
         {
 
             return null; //заглушка, должна возвратить Image;
         }
 
+
+
         public Image Insert_image(Image image1, uint x1, uint y1, Image image2)
         {
+            if (image1 == null || image2 == null) return null; 
 
 
-            return null;
+            Bitmap bmp = new Bitmap(image1.Width, image1.Height);
+
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.DrawImage(image1, 0, 0, image1.Width, image1.Height);
+                g.DrawImage(image2, x1, y1, image2.Width, image2.Height);
+
+                return bmp;
+            }
         }
     }
-
-
-
 }
